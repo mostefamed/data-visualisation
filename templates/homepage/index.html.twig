@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ title }} ! {% endblock %}
+
+{% block content %}  
+<div>
+    <h1>Programming challenge !</h1>
+
+    <div>
+        <h2>Technical environment</h2>
+        <p>
+            <ul>
+                <li>PHP8.3</li>
+                <li>Symfony7.0 PHP framework for web projects</li>
+                <li>Javascript(ES6), AJAX, HTML5, CSS3</li>
+                <li>Library Google Charts <a href="https://developers.google.com/chart?hl=en" target="_blank">Offcial website</a></li>
+            </ul>
+    </div>
+
+</div>
+
+<h2>Installation & usage</h2>
+
+<p>This project has a makefile to offer a useful commands: install, clear cache, coding style fix ..... To display the help:</p>
+<pre>make help</pre>
+
+<p>
+    - Install Symfony CLI. <a href="https://symfony.com/download#step-1-install-symfony-cli" target="_blank"> Documentation here !</a>
+    <pre>wget https://get.symfony.com/cli/installer -O - | bash <br/>export PATH="$HOME/.symfony5/bin:$PATH"
+    </pre>
+</p>
+
+<p>
+    - Install dependencies (vendor directory generated) based on composer.json/composer.lock 
+</p>
+
+<pre>make Install</pre>
+
+
+<p>
+    - Next, run the web server locally, thanks to this command
+    <pre> make serve</pre>
+    - and to stop
+    <pre>make unserve</pre>    
+</p>
+
+<h2> There are three main features in this appliaction:</h2>
+<ul>
+    <li><strong>Database connection user interface</strong>: using a form to fill up the credentials.</li>
+    <li><strong>Database query interface</strong>: to permit a connection and performing a query to the database.</li>
+    <li><strong>Built many type of charts </strong> using Google Charts Library: based on Orders and AC_Thermometer_Log tables.</li>
+</ul>    
+
+
+<h2>Code base structure</h2>
+<p> <b> The backend code is located in src/ folder and it contains: </b></p>
+<ul>
+    <li>Controller folder: contains the different logic to handle routes</li>
+    <li>Contracts folder: contains interface to implement  </li>
+    <li>Services folder: contains services to accomplish different tasks sush as performing database connection, query .... </li>
+</ul>
+
+
+<p> <b> The main frontend code is located in public/assets and templates folders</b></p>
+<ul>
+    <li>js folder: contains the different logic to handle routes. Two main files: base.js and charts/data-visualization.js</li>
+    <li>css folder: contains interface to implement  </li>
+    <li>templates folder: contains templates pages in Twig. Using inheritance. </li>
+</ul>
+
+
+<h2>Examples:</h2>
+<p>Query to perform in the page dedicated to query:</p>
+<pre>SELECT * FROM orders where order_date = '2023-12-26'</pre>
+
+<p>To build a chart, select one item from the select input (date, place) and press the button Process.</p> 
+<img src="/public/assets/img/chart-example.png">
+
+
+
+{% endblock %}
