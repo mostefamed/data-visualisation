@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+ {% block navside %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>{{ title }} </h2>   
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="alert message-info">
+                <strong>Find below Thermometer Charts built with Google charts </strong>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+
+ <form action="" method="POST" data-url="{{ path('ajax_thermometer_visualization_temp_by_place') }}">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+               <label for="thermometerId">Choose a place:</label>
+
+                <select name="thermometerId" id="thermometerId">
+                <option value="">--Please choose a place--</option>
+                {% for thermometerId in thermometerIds %}
+                   <option value="{{ thermometerId }}">{{ thermometerId }}</option>
+                {% endfor %}   
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-dark">Process</button>
+            </div>
+        </div>
+
+
+  </form>      
+
+    <div id="myChartPie" style="max-width:700px; height:400px"></div>
+    <div id="myChartBar" style="max-width:700px; height:400px"></div>
+    <div id="myChartColumn" style="max-width:700px; height:400px"></div>
+
+{% endblock %}

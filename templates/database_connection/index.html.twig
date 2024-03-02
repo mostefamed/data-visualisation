@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+ {% block navside %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>{{ title }} </h2>   
+        </div>
+    </div>              
+    <!-- /. ROW  -->
+    <hr />
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="alert message-info">
+                <strong>Please fill up the fields below to connect </strong>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}  
+    
+    {% if isConnected is defined %}
+
+        {% if isConnected %}
+            <h2 class="text-success text-center">You have been successfully connected to the Database: {{ databaseName }} </h2>
+        {% else %}
+            <h2 class="text-danger text-center">An error occured when trying to connect ..... Try again</h2>
+        {% endif %}
+        
+    {% endif %}
+
+    <form action="" method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="host">Host</label>
+                <input type="text" class="form-control" id="host" name="data[host]" placeholder="Host" required>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="databaseName">Database</label>
+                <input type="text" class="form-control" id="databaseName" name="data[databaseName]" placeholder="Database" required>
+            </div>
+        
+            <div class="form-group col-md-4">
+                <label for="port">Port</label>
+                <input type="number" class="form-control" id="port" name="data[port]" placeholder="Port" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="data[username]" placeholder="Username" required>
+            </div>
+        
+            <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="data[password]" placeholder="Password" required>
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-dark">Connect</button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

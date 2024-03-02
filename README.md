@@ -1,0 +1,1 @@
+* This project demonstrates how we could use Google Charts library to represent data.
